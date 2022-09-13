@@ -5,10 +5,8 @@ and trigger business logic layer
 
 from flask import Flask, request
 from flask import typing as flask_typing
-
-import common.common as common
-import job1.validation as validation
-import job1.handler as handler
+from common import common
+from job1 import validation, handler
 
 if not common.AUTH_TOKEN:
     print("AUTH_TOKEN environment variable must be set")

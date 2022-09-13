@@ -1,7 +1,7 @@
 from unittest import TestCase, mock
-import common.common as common
+from common import common
 import requests
-import job1.api as api
+from job1 import api
 import test_common as test_common
 
 

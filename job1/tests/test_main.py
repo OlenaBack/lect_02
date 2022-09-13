@@ -1,11 +1,7 @@
 from unittest import TestCase, mock
-
-# NB: avoid relative imports when you will write your code
-import job1.main as main
-import job1.handler as handler
-import job1.validation as validation
+from job1 import main, handler, validation
 import job1.tests.test_common as test_common
-import common.common as common
+from common import common
 
 
 class MainFunctionTestCase(TestCase):

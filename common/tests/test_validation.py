@@ -3,7 +3,6 @@ import flask
 import job1.tests.test_common as test_common
 import common.validation as validation
 import common.common as common
-from flask import request
 from unittest import TestCase, mock
 
 
@@ -26,5 +25,6 @@ class ValidationFunctionTestCase(TestCase):
         mock_side_effect.side_effect = Exception()
         request_mock = mock.patch.object(flask.request, '')
         request_mock.json = mock_side_effect
-        result = validation.validate_request(request_mock)
+
+        result = validation.validate_request(mock.patch.object(flask.request, ''))
         self.assertEqual(common.INVALID_REQUEST, result)

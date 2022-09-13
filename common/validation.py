@@ -5,7 +5,7 @@ from flask import request
 
 def validate_request(payload: request) -> str:
     try:
-        payload.json()
+        payload.json
         return common.EMPTY_STRING
     except:
         return common.INVALID_REQUEST
@@ -14,7 +14,7 @@ def validate_request(payload: request) -> str:
 def validate_property_exists(inputs: dict, key: str) -> str:
     result = common.EMPTY_STRING
 
-    if not (key in inputs.keys()):
+    if (not (key in inputs.keys())) or (inputs[key] == common.EMPTY_STRING):
         result += f"Property {key} is missing. "
 
     return result

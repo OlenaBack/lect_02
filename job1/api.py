@@ -1,5 +1,5 @@
 import requests
-import common.common as common
+from common import common
 API_URL = 'https://fake-api-vycpfa6oca-uc.a.run.app/'
 
 

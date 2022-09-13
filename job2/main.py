@@ -1,20 +1,18 @@
-"""
-This file contains the controller that accepts command via HTTP
-and trigger business logic layer
-"""
-
 from flask import Flask, request
 from flask import typing as flask_typing
-
-import comon.common as common
-import comon.validation as validation
-import job2.handler as handler
+from common import common
+from job2 import validation, handler
 
 app = Flask(__name__)
 
 
 @app.route('/', methods=['POST'])
 def main() -> flask_typing.ResponseReturnValue:
+    validation_result = validation.validate(request)
+    if validation_result != common.EMPTY_STRING:
+        return {
+                   "message": validation_result,
+               }, 400
 
     input_data: dict = request.json
 

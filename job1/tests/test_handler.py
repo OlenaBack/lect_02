@@ -1,10 +1,7 @@
 from unittest import TestCase, mock
-
-# NB: avoid relative imports when you will write your code
-import job1.handler as handler
-import common.common as common
-import common.storage as storage
-import job1.tests.test_common as test_common
+from job1 import handler
+from common import common, storage
+import test_common as test_common
 
 
 class HandlerFunctionTestCase(TestCase):

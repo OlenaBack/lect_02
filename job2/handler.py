@@ -1,4 +1,4 @@
-import comon.storage as storage
+from common import storage
 from fastavro import writer, parse_schema
 import json
 
