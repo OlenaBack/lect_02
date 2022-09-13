@@ -3,7 +3,7 @@ from unittest import TestCase, mock
 # NB: avoid relative imports when you will write your code
 import job1.main as main
 import job1.handler as handler
-import common.validation as validation
+import job1.validation as validation
 import job1.tests.test_common as test_common
 import common.common as common
 
@@ -16,7 +16,7 @@ class MainFunctionTestCase(TestCase):
         main.app.testing = True
         cls.client = main.app.test_client()
 
-    @mock.patch('common.validation.validate')
+    @mock.patch('job1.validation.validate')
     def test_return_400(self,
                         mock_validate: mock.MagicMock
                         ):
@@ -30,7 +30,7 @@ class MainFunctionTestCase(TestCase):
         )
         self.assertEqual(400, resp.status_code)
 
-    @mock.patch('common.validation.validate')
+    @mock.patch('job1.validation.validate')
     def test_api_get_sales_called(self,
                                   mock_validate
                                   ):

@@ -15,7 +15,7 @@ class GetSalesTestCase(TestCase):
         mock_get.return_value = mock_response
         mock_response.status_code = 404
         result = api.get_sales(test_common.FAKE_DATE, test_common.FAKE_RAW_DIR)
-        self.assertEqual(result, common.EMPTY_STRING)
+        self.assertEqual(common.EMPTY_STRING, result)
 
     @mock.patch.object(requests, 'get')
     def test_get_sales_with_200_in_response(
@@ -27,6 +27,6 @@ class GetSalesTestCase(TestCase):
         mock_response.status_code = common.SUCCESS_STATUS_CODE
         mock_response.text = '[{"p1":"v1"}]'
         result = api.get_sales(test_common.FAKE_DATE, test_common.FAKE_RAW_DIR)
-        self.assertEqual(result, mock_response.text)
+        self.assertEqual(mock_response.text, result)
 
 

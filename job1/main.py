@@ -7,7 +7,7 @@ from flask import Flask, request
 from flask import typing as flask_typing
 
 import common.common as common
-import common.validation as validation
+import job1.validation as validation
 import job1.handler as handler
 
 if not common.AUTH_TOKEN:
@@ -18,15 +18,13 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def main() -> flask_typing.ResponseReturnValue:
-
-    input_data: dict = request.json
-
-    validation_result = validation.validate(input_data)
+    validation_result = validation.validate(request)
     if validation_result != common.EMPTY_STRING:
         return {
                    "message": validation_result,
                }, 400
 
+    input_data: dict = request.json
     handler.handle_request(input_data["raw_dir"], input_data["date"])
     return {
                "message": "Data retrieved successfully from API",
